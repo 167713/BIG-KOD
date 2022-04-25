@@ -1,3 +1,4 @@
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 class Main {
@@ -5,7 +6,7 @@ class Main {
     int opt;
     Scanner s = new Scanner(System.in);
     while(true){
-      System.out.println("1. Dodaj sudenta");
+      System.out.println("1. Dodaj studenta");
       System.out.println("2. Wyswietl wszystkich studentow");
       System.out.println("3. Wyszukaj studenta");
       opt=s.nextInt();
@@ -56,27 +57,16 @@ class Main {
   }
 
   public static void szukaj() {
-    try {
-      int d;
+    try{
+      int dan;
       String dana;
-      Scanner d = new Scanner(System.in);
-      System.out.println("1. Wyszukaj po imieniu");
-      System.out.println("2. Wyszukaj po imieniu");
-      d=st.nextInt();
-      switch(d){
-      case 1:{
-        System.out.println("Podaj imie studenta: ");
-        dana=st.nextInt();
-        Service1 scn = new Service1();
-        var wysz = scn.findStudentByName();
-        break;}
-      case 2:{
-        System.out.println("Podaj nazwisko studenta: ");
-        dana=st.nextInt();
-        Service1 scs = new Service1();
-        var wysz = scs.findStudentBySname();
-        break;}
-      default: System.out.println("Brak opcji");
+      Scanner st = new Scanner(System.in);
+      System.out.println("Wyszukaj: ");
+      dana=st.nextLine();
+      Service1 scn = new Service1();
+      var wysz = scn.findStudentByName(dana);
+      for(Student current : wysz) {
+        System.out.println(current.ToString());
       }
     } catch (IOException e) {
 

@@ -30,7 +30,23 @@ public class Service1 {
     return ret;
   }
 
-  public Student findStudentByName(String name) {
-    return null;
+  public Collection<Student> findStudentByName(String name) throws IOException {
+    var wyn = new ArrayList<Student>();
+    var fn = new FileReader("db.txt");
+    var fr = new BufferedReader(fn);
+    String Cline="";
+    while(true){
+      Cline = fr.readLine();
+      if(Cline == null)
+        break;
+      if(Cline.contains(name))
+      wyn.add(Student.Parse(Cline));
+      else{}
+      
   }
+  fr.close();
+  return wyn;
+}
+
+
 }
